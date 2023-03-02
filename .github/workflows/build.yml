@@ -34,7 +34,7 @@ jobs:
       - name: Create single file JS output
         run: npx webpack
 
-      - name: publish script to a branch
+      - name: Publish script to a branch
         uses: EndBug/add-and-commit@v9 # You can change this to use a specific version.
         with:
           # The arguments for the `git add` command (see the paragraph below for more info)
@@ -79,7 +79,7 @@ jobs:
 
           # The message for the commit.
           # Default: 'Commit from GitHub Actions (name of the workflow)'
-          message: 'Your commit message'
+          message: 'New HexmosTech/httpsnippet version'
 
           # If this input is set, the action will push the commit to a new branch with this name.
           # Default: ''
@@ -94,7 +94,7 @@ jobs:
 
           # Arguments for the git pull command. By default, the action does not pull.
           # Default: ''
-          pull: '--rebase --autostash ...'
+          # pull: '--rebase --autostash ...'
 
           # Whether to push the commit and, if any, its tags to the repo. It can also be used to set the git push arguments (see the paragraph below for more info)
           # Default: true
