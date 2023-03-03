@@ -34,6 +34,12 @@ jobs:
       - name: Create single file JS output
         run: npx webpack
 
+      - name: Fix window.FormData not defined issue
+        run: "sed -i '/window.FormData/i window = { FormData: {} }' build/httpsnippet-bundle.js"
+
+      - name: Fix HTTPSnippet export fail issue
+        run: "sed -i '/})();/i window.HTTPSnippet = HTTPSnippet' httpsnippet-bundle.js"
+
       - name: Publish script to a branch
         uses: EndBug/add-and-commit@v9 # You can change this to use a specific version.
         with:
