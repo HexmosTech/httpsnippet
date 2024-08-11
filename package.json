@@ -1,16 +1,17 @@
 {
-  "version": "3.0.0",
+  "version": "3.0.6",
   "name": "httpsnippet",
   "description": "HTTP Request snippet generator for *most* languages",
   "author": "Kong <office@konghq.com>",
   "homepage": "https://github.com/Kong/httpsnippet",
   "license": "MIT",
-  "main": "dist/httpsnippet.js",
-  "types": "dist/httpsnippet.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "bin": "bin/httpsnippet",
   "keywords": [
     "api",
     "clojure",
+    "crystal",
     "csharp",
     "curl",
     "go",
@@ -30,6 +31,7 @@
     "request",
     "requests",
     "ruby",
+    "rust",
     "shell",
     "snippet",
     "swift",
@@ -39,7 +41,7 @@
     "xmlhttprequest"
   ],
   "engines": {
-    "node": "^14.19.1 || ^16.14.2 || ^18.0.0"
+    "node": "^14.19.1 || ^16.14.2 || ^18.0.0 || ^20.0.0"
   },
   "repository": "Kong/httpsnippet",
   "bugs": {
@@ -49,8 +51,8 @@
     "clean": "tsc --build tsconfig.build.json --clean",
     "prebuild": "npm run clean",
     "lint": "npm run lint:prettify && npm run lint:code && npm run lint:markdown",
-    "lint:prettify": "prettier --write .",
-    "lint:code": "eslint . --ext ts,d.ts,test.ts --fix",
+    "lint:prettify": "prettier --check .",
+    "lint:code": "eslint . --ext ts,d.ts,test.ts",
     "lint:markdown": "markdownlint-cli2 \"**/*.md\" \"#**/node_modules\"",
     "build": "npx webpack",
     "test": "jest"
@@ -90,6 +92,7 @@
     "form-data": "4.0.0",
     "har-schema": "^2.0.0",
     "node-polyfill-webpack-plugin": "^2.0.1",
+    "querystring-es3": "^0.2.1",
     "stringify-object": "3.3.0",
     "webpack": "^5.75.0",
     "yargs": "^17.4.0"

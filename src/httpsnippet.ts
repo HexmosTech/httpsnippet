@@ -53,7 +53,7 @@ interface Entry {
   request: Partial<HarRequest>;
 }
 
-interface HarEntry {
+export interface HarEntry {
   log: {
     version: string;
     creator: {
@@ -64,7 +64,7 @@ interface HarEntry {
   };
 }
 
-const isHarEntry = (value: any): value is HarEntry =>
+export const isHarEntry = (value: any): value is HarEntry =>
   typeof value === 'object' &&
   'log' in value &&
   typeof value.log === 'object' &&
@@ -100,10 +100,10 @@ export class HTTPSnippet {
         cookies: [],
         httpVersion: 'HTTP/1.1',
         queryString: [],
-        postData: {
+        ...request,
+        postData: request?.postData || {
           mimeType: request.postData?.mimeType || 'application/octet-stream',
         },
-        ...request,
       };
 
       if (validateHarRequest(req)) {
@@ -164,7 +164,7 @@ export class HTTPSnippet {
       request.allHeaders.cookie = cookies.join('; ');
     }
 
-    switch (request.postData.mimeType) {
+    switch (request?.postData.mimeType) {
       case 'multipart/mixed':
       case 'multipart/related':
       case 'multipart/form-data':
